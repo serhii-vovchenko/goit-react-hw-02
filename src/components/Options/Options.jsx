@@ -1,16 +1,30 @@
 import s from './Options.module.css';
 
-const Options = ({ data, updateFeedback }) => {
+const Options = ({ data, updateFeedback, totalFeedback }) => {
     return (
-        <>
+        <div className={s.wrapper}>
             {Object.keys(data).map(key => {
                 return (
-                    <button key={key} onClick={() => updateFeedback(key)}>
+                    <button
+                        className={s.btn}
+                        key={key}
+                        onClick={() => updateFeedback(key)}
+                    >
                         {key}
                     </button>
                 );
             })}
-        </>
+            {totalFeedback(data) > 0 ? (
+                <button
+                    className={s.btn}
+                    onClick={() => updateFeedback('reset')}
+                >
+                    reset
+                </button>
+            ) : (
+                false
+            )}
+        </div>
     );
 };
 

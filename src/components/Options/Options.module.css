@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    text-transform: capitalize;
+    font-size: 18px;
+
+    &:focus {
+        outline: none;
+    }
+}
