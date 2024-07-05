@@ -15,17 +15,6 @@ function App() {
 
     const LS_KEY = 'users-clicks';
 
-    const totalFeedback = clicks => {
-        if (!clicks) {
-            return 0;
-        }
-
-        return Object.values(clicks).reduce(
-            (acc, feedback) => acc + feedback,
-            0
-        );
-    };
-
     const [clicks, setClicks] = useState(() => {
         const userClicks = JSON.parse(window.localStorage.getItem(LS_KEY));
 
@@ -51,12 +40,16 @@ function App() {
         }
     };
 
-    // const totalFeedback = clicks => {
-    //     return Object.values(clicks).reduce(
-    //         (acc, feedback) => acc + feedback,
-    //         0
-    //     );
-    // };
+    function totalFeedback(clicks) {
+        if (!clicks) {
+            return 0;
+        }
+
+        return Object.values(clicks).reduce(
+            (acc, feedback) => acc + feedback,
+            0
+        );
+    }
 
     return (
         <>
