@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import Description from '../Description/Description';
-import Feedback from '../Feedback/Feedback';
 import Options from '../Options/Options';
+import Notification from '../Notification/Notification';
+import Feedback from '../Feedback/Feedback';
 
 import './App.css';
 
@@ -51,6 +52,9 @@ function App() {
         );
     }
 
+    const totalFB = totalFeedback(clicks);
+    const positiveFB = Math.round(((totalFB - clicks.bad) / totalFB) * 100);
+
     return (
         <>
             <Description />
@@ -59,7 +63,15 @@ function App() {
                 updateFeedback={updateFeedback}
                 totalFeedback={totalFeedback}
             />
-            <Feedback data={clicks} totalFeedback={totalFeedback} />
+            {totalFB > 0 ? (
+                <Feedback
+                    data={clicks}
+                    totalFB={totalFB}
+                    positiveFB={positiveFB}
+                />
+            ) : (
+                <Notification />
+            )}
         </>
     );
 }

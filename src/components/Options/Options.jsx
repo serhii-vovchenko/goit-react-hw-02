@@ -14,15 +14,14 @@ const Options = ({ data, updateFeedback, totalFeedback }) => {
                     </button>
                 );
             })}
-            {totalFeedback(data) > 0 ? (
+
+            {totalFeedback(data) > 0 && (
                 <button
                     className={s.btn}
                     onClick={() => updateFeedback('reset')}
                 >
                     reset
                 </button>
-            ) : (
-                false
             )}
         </div>
     );
